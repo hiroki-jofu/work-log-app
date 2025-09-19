@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/work-log-app/static/css/main.c1f16d9f.css",
+    "main.js": "/work-log-app/static/js/main.d8804609.js",
+    "static/js/453.437942cb.chunk.js": "/work-log-app/static/js/453.437942cb.chunk.js",
+    "static/media/mendan-kiroku-logo.svg": "/work-log-app/static/media/mendan-kiroku-logo.3529619a293d3a4195c7f4a7460d15e8.svg",
+    "index.html": "/work-log-app/index.html",
+    "main.c1f16d9f.css.map": "/work-log-app/static/css/main.c1f16d9f.css.map",
+    "main.d8804609.js.map": "/work-log-app/static/js/main.d8804609.js.map",
+    "453.437942cb.chunk.js.map": "/work-log-app/static/js/453.437942cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c1f16d9f.css",
+    "static/js/main.d8804609.js"
+  ]
+}
