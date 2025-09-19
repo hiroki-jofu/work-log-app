@@ -12,7 +12,6 @@ import { format } from 'date-fns';
 const MainApp: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [fontSize, setFontSize] = useState(16);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -23,10 +22,6 @@ const MainApp: React.FC = () => {
     deleteAllInterviews,
     setInterviews,
   } = useInterviewStore();
-
-  useEffect(() => {
-    document.documentElement.style.fontSize = `${fontSize}px`;
-  }, [fontSize]);
 
   const filteredInterviews = useMemo(() => {
     if (!searchQuery) return interviews;
@@ -188,8 +183,6 @@ const MainApp: React.FC = () => {
       <Header
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
-        fontSize={fontSize}
-        onFontSizeChange={setFontSize}
         onExportCsv={handleExportCsv}
         onBackupToFile={handleBackupToFile}
         onRestoreFromFile={handleRestoreFromFile}

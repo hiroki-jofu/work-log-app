@@ -5,8 +5,6 @@ import mendanKirokuLogo from '../mendan-kiroku-logo.svg';
 interface HeaderProps {
   searchQuery: string;
   onSearchChange: (query: string) => void;
-  fontSize: number;
-  onFontSizeChange: (size: number) => void;
   onExportCsv: () => void;
   onBackupToFile: () => void;
   onRestoreFromFile: () => void;
@@ -16,8 +14,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ 
   searchQuery, 
   onSearchChange, 
-  fontSize, 
-  onFontSizeChange, 
   onExportCsv, 
   onBackupToFile,
   onRestoreFromFile,
@@ -63,8 +59,8 @@ const Header: React.FC<HeaderProps> = ({
     <header className="pb-3 mb-4 app-header">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1 className="fs-4 mb-0 app-title">
-          <img src={mendanKirokuLogo} alt="面談記録アプリ ロゴ" style={{ height: '40px', marginRight: '10px' }} />
-          面談記録アプリ
+          <img src={mendanKirokuLogo} alt="ワーク記録アプリ ロゴ" style={{ height: '40px', marginRight: '10px' }} />
+          ワーク記録アプリ
         </h1>
         <div className="position-relative" ref={menuRef}>
           <button className="btn btn-outline-secondary" onClick={() => setMenuOpen(!isMenuOpen)}>
@@ -93,7 +89,7 @@ const Header: React.FC<HeaderProps> = ({
       </div>
       
       <div className="row g-3 align-items-center">
-        <div className="col-md-6 position-relative">
+        <div className="col-md-12 position-relative">
           <input 
             type="text"
             className="form-control"
@@ -110,15 +106,6 @@ const Header: React.FC<HeaderProps> = ({
               onClick={() => onSearchChange('')}
             ></button>
           )}
-        </div>
-        <div className="col-md-6 d-flex align-items-center justify-content-end">
-          <label className="form-label me-3 mb-0">文字サイズ:</label>
-          <div className="btn-group" role="group">
-            <button type="button" className={`btn btn-outline-primary ${fontSize === 14 ? 'active' : ''}`} onClick={() => onFontSizeChange(14)}>小</button>
-            <button type="button" className={`btn btn-outline-primary ${fontSize === 16 ? 'active' : ''}`} onClick={() => onFontSizeChange(16)}>普通</button>
-            <button type="button" className={`btn btn-outline-primary ${fontSize === 19 ? 'active' : ''}`} onClick={() => onFontSizeChange(19)}>大</button>
-            <button type="button" className={`btn btn-outline-primary ${fontSize === 22 ? 'active' : ''}`} onClick={() => onFontSizeChange(22)}>特大</button>
-          </div>
         </div>
       </div>
     </header>
