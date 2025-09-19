@@ -1,6 +1,6 @@
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .day-cell {
@@ -39,11 +39,27 @@
   font-size: 0.75em;
   margin-top: 4px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3; /* 3行まで表示 */
-  -webkit-box-orient: vertical;
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* 各行の間にスペースを追加 */
 }
+
+.workNamePreview {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.themePreview,
+.countPreview {
+  font-size: 0.9em;
+  color: #6c757d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 
 /* 検索ハイライト用のスタイル */
 .day-cell.highlight {
