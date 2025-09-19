@@ -96,18 +96,16 @@ const Calendar: React.FC<CalendarProps> = ({ onDateClick }) => {
   return (
     <div className="card">
       <div className={`card-header ${styles['calendar-header']}`}>
-        <button className="btn btn-outline-primary" onClick={goToPreviousMonth}>&lt; 前月</button>
+        <button className="btn btn-outline-primary" onClick={goToPreviousMonth}>«</button>
         <div className={`${styles['calendar-controls']} d-flex align-items-center`}>
-          <select className="form-select" style={{ minWidth: '7em' }} value={year} onChange={handleYearChange}>
-            {yearOptions.map(y => <option key={y} value={y}>{y}</option>)}
+          <select className={`form-select ${styles.yearSelect}`} value={year} onChange={handleYearChange}>
+            {yearOptions.map(y => <option key={y} value={y}>{y}年</option>)}
           </select>
-          <span className="mx-2">年</span>
-          <select className="form-select" style={{ minWidth: '6em' }} value={month} onChange={handleMonthChange}>
-            {monthOptions.map(m => <option key={m} value={m}>{m}</option>)}
+          <select className={`form-select ms-2 ${styles.monthSelect}`} value={month} onChange={handleMonthChange}>
+            {monthOptions.map(m => <option key={m} value={m}>{m}月</option>)}
           </select>
-          <span className="ms-2">月</span>
         </div>
-        <button className="btn btn-outline-primary" onClick={goToNextMonth}>次月 &gt;</button>
+        <button className="btn btn-outline-primary" onClick={goToNextMonth}>»</button>
       </div>
       <div className={`${styles['calendar-grid']} text-center`}>
         {['日', '月', '火', '水', '木', '金', '土'].map(day => (

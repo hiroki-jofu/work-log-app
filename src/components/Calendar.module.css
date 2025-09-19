@@ -63,3 +63,11 @@
   display: flex;
   align-items: center;
 }
+
+.yearSelect {
+  min-width: 7em;
+}
+
+.monthSelect {
+  min-width: 5em;
+}

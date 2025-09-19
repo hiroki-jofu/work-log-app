@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { openDB } from 'idb';
 import { InterviewData, InterviewRecord } from './types';
 
-const DB_NAME = 'diary-app-db';
+const DB_NAME = 'work-log-app-db';
 const STORE_NAME = 'interviews';
 const DATA_KEY = 'all-interviews';
 
