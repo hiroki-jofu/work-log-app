@@ -4,6 +4,8 @@ import InterviewModal from './components/InterviewModal';
 import Header from './components/Header';
 import SearchResultList from './components/SearchResultList';
 
+import TemplateModal from './components/TemplateModal';
+
 import useInterviewStore from './store';
 import { InterviewRecord, InterviewData } from './types';
 import styles from './App.module.css';
@@ -12,6 +14,7 @@ import { format } from 'date-fns';
 const MainApp: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isTemplateModalOpen, setTemplateModalOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -185,6 +188,7 @@ const MainApp: React.FC = () => {
         onBackupToFile={handleBackupToFile}
         onRestoreFromFile={handleRestoreFromFile}
         onDeleteAll={handleDeleteAll}
+        onOpenTemplateModal={() => setTemplateModalOpen(true)}
       />
 
       <main>
@@ -203,6 +207,13 @@ const MainApp: React.FC = () => {
           onClose={handleModalClose}
           onSave={handleSave}
           onDeleteDate={handleDeleteDate}
+        />
+      )}
+
+      {isTemplateModalOpen && (
+        <TemplateModal 
+          show={isTemplateModalOpen}
+          onClose={() => setTemplateModalOpen(false)}
         />
       )}
 

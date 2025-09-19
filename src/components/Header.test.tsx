@@ -8,6 +8,7 @@ describe('Header', () => {
   const mockOnBackupToFile = jest.fn();
   const mockOnRestoreFromFile = jest.fn();
   const mockOnDeleteAll = jest.fn();
+  const mockOnOpenTemplateModal = jest.fn();
 
   afterEach(() => {
     jest.clearAllMocks();
@@ -22,11 +23,12 @@ describe('Header', () => {
         onBackupToFile={mockOnBackupToFile}
         onRestoreFromFile={mockOnRestoreFromFile}
         onDeleteAll={mockOnDeleteAll}
+        onOpenTemplateModal={mockOnOpenTemplateModal}
       />
     );
 
     expect(screen.getByText('ワーク記録アプリ')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('氏名、学年、カテゴリ、本文で検索...')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('ワーク名、テーマ、メモで検索...')).toBeInTheDocument();
     expect(screen.getByText('メニュー')).toBeInTheDocument();
   });
 
@@ -39,10 +41,11 @@ describe('Header', () => {
         onBackupToFile={mockOnBackupToFile}
         onRestoreFromFile={mockOnRestoreFromFile}
         onDeleteAll={mockOnDeleteAll}
+        onOpenTemplateModal={mockOnOpenTemplateModal}
       />
     );
 
-    const searchInput = screen.getByPlaceholderText('氏名、学年、カテゴリ、本文で検索...');
+    const searchInput = screen.getByPlaceholderText('ワーク名、テーマ、メモで検索...');
     fireEvent.change(searchInput, { target: { value: 'テスト' } });
 
     expect(mockOnSearchChange).toHaveBeenCalledTimes(1);

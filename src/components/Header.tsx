@@ -9,6 +9,7 @@ interface HeaderProps {
   onBackupToFile: () => void;
   onRestoreFromFile: () => void;
   onDeleteAll: () => void;
+  onOpenTemplateModal: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
@@ -17,7 +18,8 @@ const Header: React.FC<HeaderProps> = ({
   onExportCsv, 
   onBackupToFile,
   onRestoreFromFile,
-  onDeleteAll 
+  onDeleteAll,
+  onOpenTemplateModal 
 }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -55,6 +57,11 @@ const Header: React.FC<HeaderProps> = ({
     onRestoreFromFile();
   };
 
+  const handleOpenTemplateModal = () => {
+    setMenuOpen(false);
+    onOpenTemplateModal();
+  };
+
   return (
     <header className="pb-3 mb-4 app-header">
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -69,6 +76,9 @@ const Header: React.FC<HeaderProps> = ({
           {isMenuOpen && (
             <div className="card position-absolute" style={{ width: '280px', top: '100%', right: 0, zIndex: 10 }}>
               <ul className="list-group list-group-flush">
+                <li className="list-group-item list-group-item-action" onClick={handleOpenTemplateModal} style={{ cursor: 'pointer' }}>
+                  テンプレート
+                </li>
                 <li className="list-group-item list-group-item-action" onClick={handleExport} style={{ cursor: 'pointer' }}>
                   記録をExcel形式で書き出す
                 </li>
