@@ -67,7 +67,7 @@ const Calendar: React.FC<CalendarProps> = ({ onDateClick }) => {
           <div className={styles['day-number']}>{i}</div>
           {interviewData && Array.isArray(interviewData.records) && interviewData.records.length > 0 && (
             <div className={styles['diary-preview']}>
-              {interviewData.records.map(r => r.studentName).join(', ')}
+              {interviewData.records.map(r => r.workName).join(', ')}
             </div>
           )}
         </div>

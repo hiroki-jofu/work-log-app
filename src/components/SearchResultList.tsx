@@ -24,11 +24,11 @@ const SearchResultList: React.FC<SearchResultListProps> = ({ searchQuery, matchi
         {matchingRecords.map(record => (
           <div key={record.id} className="list-group-item list-group-item-action flex-column align-items-start mb-2">
             <div className="d-flex w-100 justify-content-between">
-              <h5 className="mb-1">{record.studentName} ({record.studentGrade}年)</h5>
+              <h5 className="mb-1">{record.workName}</h5>
               <small className="text-muted">{record.date}</small>
             </div>
-            <p className="mb-1">所属: {record.studentDepartment} / カテゴリー: {record.category}</p>
-            <small className="text-muted">本文: {record.content.substring(0, 100)}{record.content.length > 100 ? '...' : ''}</small>
+            <p className="mb-1">テーマ: {record.theme} / 回数: {record.count}回</p>
+            <small className="text-muted">メモ: {record.memo.substring(0, 100)}{record.memo.length > 100 ? '...' : ''}</small>
           </div>
         ))}
       </div>

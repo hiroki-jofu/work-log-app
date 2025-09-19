@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({
           <input 
             type="text"
             className="form-control"
-            placeholder="氏名、学年、カテゴリ、本文で検索..."
+            placeholder="ワーク名、テーマ、メモで検索..."
             value={searchQuery}
             onChange={e => onSearchChange(e.target.value)}
           />

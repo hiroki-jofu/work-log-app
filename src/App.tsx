@@ -31,11 +31,9 @@ const MainApp: React.FC = () => {
         if (!interview || !Array.isArray(interview.records)) return { ...interview, records: [] };
         const filteredRecords = interview.records.filter(
           record =>
-            (record.studentName && record.studentName.toLowerCase().includes(lowerCaseQuery)) ||
-            (record.studentGrade && record.studentGrade.toLowerCase().includes(lowerCaseQuery)) ||
-            (record.studentDepartment && record.studentDepartment.toLowerCase().includes(lowerCaseQuery)) ||
-            (record.category && record.category.toLowerCase().includes(lowerCaseQuery)) ||
-            (record.content && record.content.toLowerCase().includes(lowerCaseQuery))
+            (record.workName && record.workName.toLowerCase().includes(lowerCaseQuery)) ||
+            (record.theme && record.theme.toLowerCase().includes(lowerCaseQuery)) ||
+            (record.memo && record.memo.toLowerCase().includes(lowerCaseQuery))
         );
         return { ...interview, records: filteredRecords };
       })
@@ -104,12 +102,12 @@ const MainApp: React.FC = () => {
       }
       return cell;
     };
-    const headers = ['面談日', '氏名', '学年', '学生所属', '面談カテゴリー', '本文'];
+    const headers = ['日付', 'ワーク名', 'テーマ', '回数', 'メモ'];
     const rows = interviews.flatMap(interview => {
       if (!interview || !Array.isArray(interview.records)) return [];
       return interview.records.map(record =>
-        [interview.date, record.studentName, record.studentGrade, record.studentDepartment, record.category, record.content]
-          .map(escapeCsvCell)
+        [interview.date, record.workName, record.theme, record.count, record.memo]
+          .map(cell => escapeCsvCell(String(cell ?? '')))
           .join(',')
       );
     });
@@ -119,7 +117,7 @@ const MainApp: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `mendan_kiroku_${format(new Date(), 'yyyy-MM-dd')}.csv`;
+    link.download = `work_log_${format(new Date(), 'yyyy-MM-dd')}.csv`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -136,7 +134,7 @@ const MainApp: React.FC = () => {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `面談記録バックアップ_${format(new Date(), 'yyyy-MM-dd')}.txt`;
+    link.download = `ワーク記録バックアップ_${format(new Date(), 'yyyy-MM-dd')}.txt`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
